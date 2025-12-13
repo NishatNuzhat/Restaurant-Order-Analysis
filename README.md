@@ -8,7 +8,7 @@ Taste of the world cafe, a restaurant that has diverse menu offerings and serves
 - Understand how customers are reacting to the new menu.
 
 ## Dataset
-The data for this project is sourced from the Maven Analytics.
+The data for this project is sourced from Maven Analytics.
 
 ## Schema
 
