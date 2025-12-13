@@ -46,10 +46,68 @@ CREATE TABLE menu_items (
 ```
 ## Business Problems and Solutions
 
-### 1. find the number of items on the menu
+### 1. Find the number of items on the menu
 
 ```sql
 SELECT      
 COUNT(*) AS number_of_items
 FROM menu_items;
+```
+### 2. What are the least and most expensive items on the menu?
+
+```sql
+SELECT * 
+FROM 
+menu_items
+ORDER BY 
+price;
+SELECT * 
+FROM 
+menu_items
+ORDER BY 
+price desc;
+```
+### 3. How many Italian dishes are on the menu?
+
+```sql
+SELECT   
+COUNT(*) AS italian_dishes
+FROM
+menu_items
+WHERE 
+category ='Italian';
+```
+### 4. What are the least and most expensive Italian dishes on the menu?
+
+```sql
+SELECT  
+*
+FROM
+menu_items
+WHERE 
+category = 'Italian'
+ORDER BY
+price;
+```
+### 5. How many dishes are in each category? 
+
+```sql
+SELECT 
+category,
+COUNT(category) AS total_dishes
+FROM
+menu_items
+GROUP BY
+category;
+```
+### 6.  What is the average dish price within each category?
+
+```sql
+SELECT  
+category,
+ROUND(AVG(price),2) AS avg_price
+FROM
+menu_items
+GROUP BY
+category
 ```
