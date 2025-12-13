@@ -43,7 +43,7 @@ CREATE TABLE menu_items (
 );
 
 );
-
+```
 ## Business Problems and Solutions
 
 ### 1. find the number of items on the menu
