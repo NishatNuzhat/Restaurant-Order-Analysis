@@ -274,3 +274,8 @@ o.item_id = m.menu_item_id) AS single_table
 WHERE order_id IN (440,2075,1957,330,2675)
 GROUP BY order_id,category;
 ```
+## Findings and Conclusion
+
+The least ordered item was the Chicken Tacos and the most ordered item was a Hamburger. The most ordered items were American and Asian items and mostly Mexican items were least ordered. People seem to be ordering Italian dishes a lot, especially the highest spend customers.
+
+This analysis provides a comprehensive view of customer's behaviour towards the menu of that restaurant and can help inform strategy and decision-making.
