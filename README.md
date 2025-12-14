@@ -111,3 +111,166 @@ menu_items
 GROUP BY
 category
 ```
+### 7.  What is the date range?
+
+```sql
+SELECT                       
+MIN(order_date),
+MAX(order_date)
+FROM
+order_details;
+```
+### 8.  How many orders were made within this date range?
+
+```sql
+SELECT                     
+COUNT(DISTINCT order_id) AS total_orders
+FROM
+order_details;
+```
+### 9.  How many items were ordered within this date range?
+
+```sql
+SELECT                     
+COUNT(*) AS total_items_ordered
+FROM
+order_details;
+```
+### 10.  Which orders had the most number of items?
+
+```sql
+SELECT                    
+order_id,
+COUNT(item_id) AS number_of_items
+FROM
+order_details
+GROUP BY
+order_id
+ORDER BY 
+2 desc;
+```
+### 11.  How many orders had more than 12 items?
+
+```sql
+SELECT COUNT(*) FROM   
+(SELECT                    
+order_id,
+COUNT(item_id) AS number_of_items
+FROM
+order_details
+GROUP BY
+order_id
+HAVING
+COUNT(item_id) > 12) AS a;
+```
+### 12.  Combine the menu_items and order_details tables into a single table
+
+```sql
+SELECT             
+o.order_details_id,
+o.order_id,
+o.order_date,
+o.order_time,
+o.item_id,
+m.item_name,
+m.category,
+m.price
+FROM
+order_details o 
+LEFT JOIN
+menu_items m 
+ON
+o.item_id = m.menu_item_id;
+```
+### 13.  What were the least and most ordered items? What categories were they in?
+
+```sql
+SELECT              
+item_name,category,       
+COUNT(order_details_id) AS num_purchases
+FROM
+(SELECT
+o.order_details_id,
+o.order_id,
+o.order_date,
+o.order_time,
+o.item_id,
+m.item_name,
+m.category,
+m.price
+FROM
+order_details o 
+LEFT JOIN
+menu_items m 
+ON
+o.item_id = m.menu_item_id) AS single_table
+group by item_name, category
+ORDER BY 3 ;
+```
+### 14.  What were the top 5 orders that spent the most money?
+
+```sql
+SELECT order_id,SUM(price) AS money_spent  
+FROM (SELECT
+o.order_details_id,
+o.order_id,
+o.order_date,
+o.order_time,
+o.item_id,
+m.item_name,
+m.category,
+m.price
+FROM
+order_details o 
+LEFT JOIN
+menu_items m 
+ON
+o.item_id = m.menu_item_id) AS single_table
+GROUP BY order_id
+ORDER BY 2 desc
+LIMIT 5;
+```
+### 15.  View the details of the highest spend order. Which specific items were purchased?
+
+```sql
+SELECT category,count(item_id) as num_of_items
+FROM (SELECT
+o.order_details_id,
+o.order_id,
+o.order_date,
+o.order_time,
+o.item_id,
+m.item_name,
+m.category,
+m.price
+FROM
+order_details o 
+LEFT JOIN
+menu_items m 
+ON
+o.item_id = m.menu_item_id) AS single_table
+WHERE order_id = 440
+GROUP BY category;
+```
+### 16.  View the details of the top 5 highest spend orders
+
+```sql
+SELECT order_id,category,count(item_id) as num_of_items
+FROM (SELECT
+o.order_details_id,
+o.order_id,
+o.order_date,
+o.order_time,
+o.item_id,
+m.item_name,
+m.category,
+m.price
+FROM
+order_details o 
+LEFT JOIN
+menu_items m 
+ON
+o.item_id = m.menu_item_id) AS single_table
+WHERE order_id IN (440,2075,1957,330,2675)
+GROUP BY order_id,category;
+```
