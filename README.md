@@ -65,12 +65,30 @@ FROM
 menu_items
 ORDER BY 
 price;
+```
+-- OUTPUT --
+| menu_item_id | item_name | category | price |
+|--------------|-----------|----------|-------|
+| 113          | Edamame   | Asian    | 5.00  |
+| 105          | Mac & Cheese | American | 7.00  |
+| 106          | French Fries | American | 7.00  |
+| 122          | Chips & Salsa | Mexican  | 7.00  |
+| 103          | Hot Dog   | American | 9.00  |
+```sql
 SELECT * 
 FROM 
 menu_items
 ORDER BY 
 price desc;
 ```
+-- OUTPUT --
+| menu_item_id | item_name | category | price |
+|--------------|-----------|----------|-------|
+| 130          | Shrimp Scampi | Italian  | 19.95 |
+| 109          | Korean Beef Bowl | Asian    | 17.95 |
+| 110          | Pork Ramen | Asian    | 17.95 |
+| 125          | Spaghetti & Meatballs | Italian  | 17.95 |
+| 127          | Meat Lasagna | Italian  | 17.95 |
 ### 3. How many Italian dishes are on the menu?
 
 ```sql
