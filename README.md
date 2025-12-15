@@ -54,8 +54,9 @@ COUNT(*) AS number_of_items
 FROM menu_items;
 ```
 -- OUTPUT --
-Column Name,Value
-number_of_items,32
+| number_of_items |
+|-----------------|
+| 32              |
 ### 2. What are the least and most expensive items on the menu?
 
 ```sql
