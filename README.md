@@ -335,6 +335,7 @@ ON
 o.item_id = m.menu_item_id) AS single_table
 group by item_name, category
 ORDER BY 3 desc;
+```
 -- OUTPUT --
 | item_name | category | num_purchases |
 |-----------|----------|---------------|
