@@ -41,8 +41,6 @@ CREATE TABLE menu_items (
   price DECIMAL(5,2),
   PRIMARY KEY (menu_item_id)
 );
-
-);
 ```
 ## Business Problems and Solutions
 
